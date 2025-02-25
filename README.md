@@ -9,7 +9,7 @@ A service for tracking and retrieving user study statistics for courses.
 Tools used:
 - [SST](https://sst.dev) is used to set up and deploy the necessary AWS resources.
 
-AWS credentials must be updated before deploying or starting dev.
+> AWS credentials (profile or ENV) must be configured before deploying or starting dev.
 
 
 ### Starting Local Development
@@ -36,13 +36,13 @@ This allows us to connect to our db from local machine.
 
 ### Development
 
-Start the development server: `npm run dev`
+> By running this, SST will automatically deploy the necessary infrastructure on AWS to run the app, including a VPC, Lambda function, RDS.
 
-**IMPORTANT: By running this, SST will automatically deploy the necessary infrastructure on AWS to run the app, including a VPC, Lambda function, RDS.**
+Start the development server: `npm run dev`
 
 This will also:
 
-1. Start the API in development mode
+1. Start the API in ["live"](https://sst.dev/docs/live/) mode
 2. Watch for changes and hot reload
 
 To view your database with Drizzle Studio:
