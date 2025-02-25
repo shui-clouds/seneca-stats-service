@@ -12,12 +12,6 @@ Tools used:
 > AWS credentials (profile or ENV) must be configured before deploying or starting dev.
 
 
-### Starting Local Development
-
-1. Once cloned the repo, run `cd seneca-stats-service`
-
-2. Install dependencies: `npm i`
-
 ### Schema
 
 The database schema consists of:
@@ -29,12 +23,12 @@ The database schema consists of:
 
 Currently using AWS RDS database with Drizzle ORM.
 
+Install dependencies: `npm i`
+
 Before starting dev server, apply migrations: `npm run db migrate`
 
-Since the database cluster is in a VPC, run: `sudo npx sst tunnel install`.
-This allows us to connect to our db from local machine.
-
 ### Development
+
 
 > By running this, SST will automatically deploy the necessary infrastructure on AWS to run the app, including a VPC, Lambda function, RDS.
 
@@ -44,6 +38,11 @@ This will also:
 
 1. Start the API in ["live"](https://sst.dev/docs/live/) mode
 2. Watch for changes and hot reload
+
+Since the database cluster is in a VPC, run: `sudo npx sst tunnel install`.
+This allows us to connect to our db from local machine.
+
+> Alternatively, you can run `npx sst deploy` to deploy the code to Lambda, and hit the API without running in "live" mode.
 
 To view your database with Drizzle Studio:
 go to `https://local.drizzle.studio/`
