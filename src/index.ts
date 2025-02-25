@@ -5,7 +5,7 @@ import { avg, sum, eq, and } from "drizzle-orm";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
 import { sessions } from "./schema";
-
+import {DatabaseError} from "pg";
 const app = new Hono();
 
 const userIdValidator = zValidator(
@@ -37,15 +37,27 @@ app.post(
     const { userId } = c.req.valid("header");
     const { courseId } = c.req.valid("param");
     const validated = c.req.valid("json");
-    await db.insert(sessions).values({
-      courseId,
-      userId,
-      sessionId: validated.sessionId,
-      totalModulesStudied: validated.totalModulesStudied,
-      averageScore: validated.averageScore,
-      timeStudied: validated.timeStudied,
-    });
-    return c.json(validated);
+
+    try {
+      await db.insert(sessions).values({
+        courseId,
+        userId,
+        sessionId: validated.sessionId,
+        totalModulesStudied: validated.totalModulesStudied,
+        averageScore: validated.averageScore,
+        timeStudied: validated.timeStudied,
+      });
+      return c.json(validated);
+    } catch (error) {
+      if (
+        error instanceof DatabaseError &&
+        error.code === "23505" &&
+        error.constraint === "sessions_pkey"
+      ) {
+        return c.json({ error: "Session already exists" }, 400);
+      }
+      throw error;
+    }
   }
 );
 
