@@ -1,12 +1,12 @@
 import { Hono } from "hono";
 import { handle } from "hono/aws-lambda";
-import { db } from "./drizzle";
+import { db } from "./db";
 import { avg, sum, eq, and } from "drizzle-orm";
 import { zValidator } from "@hono/zod-validator";
 import { z } from "zod";
 import { sessions } from "./schema";
 import {DatabaseError} from "pg";
-const app = new Hono();
+export const app = new Hono();
 
 const userIdValidator = zValidator(
   "header",
