@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "test": "vitest",
-    "db": "sst shell drizzle-kit"
+    "db": "sst shell drizzle-kit",
+    "dev": "sst dev"
   },
   "dependencies": {
     "@hono/zod-validator": "^0.4.3",
@@ -15,7 +16,6 @@
   },
   "devDependencies": {
     "@types/aws-lambda": "8.10.147",
-    "@types/bun": "latest",
     "@types/pg": "^8.11.11",
     "drizzle-kit": "^0.30.4",
     "vitest": "^3.0.7"
