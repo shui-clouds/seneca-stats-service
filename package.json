@@ -7,15 +7,16 @@
     "db": "sst shell drizzle-kit"
   },
   "dependencies": {
+    "@hono/zod-validator": "^0.4.3",
     "drizzle-orm": "^0.39.3",
     "hono": "^4.7.2",
     "pg": "^8.13.3",
     "sst": "3.9.10"
   },
   "devDependencies": {
-    "@types/pg": "^8.11.11",
-    "@types/bun": "latest",
     "@types/aws-lambda": "8.10.147",
+    "@types/bun": "latest",
+    "@types/pg": "^8.11.11",
     "drizzle-kit": "^0.30.4"
   },
   "peerDependencies": {
