@@ -3,7 +3,7 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "vitest",
     "db": "sst shell drizzle-kit"
   },
   "dependencies": {
@@ -17,7 +17,8 @@
     "@types/aws-lambda": "8.10.147",
     "@types/bun": "latest",
     "@types/pg": "^8.11.11",
-    "drizzle-kit": "^0.30.4"
+    "drizzle-kit": "^0.30.4",
+    "vitest": "^3.0.7"
   },
   "peerDependencies": {
     "typescript": "^5"
